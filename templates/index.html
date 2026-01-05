@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Consulta de Variantes</title>
+</head>
+<body>
+    <h1>Consulta de variantes genéticas (Ensembl)</h1>
+
+    <form method="post">
+        <input type="text" name="rsid" placeholder="Ex: rs1333049" required>
+        <button type="submit">Consultar</button>
+    </form>
+
+    {% if result %}
+        <h2>Resultado</h2>
+
+        {% if result.error %}
+            <p style="color:red;">{{ result.error }}</p>
+        {% else %}
+            <ul>
+                <li><b>Cromossomo:</b> {{ result.chromosome }}</li>
+                <li><b>Posição:</b> {{ result.position }}</li>
+                <li><b>Alelos:</b> {{ result.alleles }}</li>
+                <li><b>Frequência do alelo menor:</b> {{ result.minor_allele_freq }}</li>
+                <li><b>Consequência:</b> {{ result.consequence }}</li>
+            </ul>
+        {% endif %}
+    {% endif %}
+</body>
+</html>
