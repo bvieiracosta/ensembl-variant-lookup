@@ -10,6 +10,15 @@ The project was developed as a **technical challenge for a Bioinformatics Analys
 
 ---
 
+## 🧬 Motivation
+
+This project was developed with a focus on **bioinformatics**, **molecular genetics**, and **pharmacogenomics**, serving as a foundation for:
+- Genetic variant analysis
+- Integration with genomic databases
+- Reproducible scientific software development
+
+---
+
 ## Features
 
 * Query human genetic variants using **rsID** (e.g. `rs1333049`)
@@ -36,27 +45,26 @@ The project was developed as a **technical challenge for a Bioinformatics Analys
 * **Pytest** – unit testing
 * **HTML (Jinja2 templates)** – frontend rendering
 
----
+----
 
-## Project Structure
+## 🗂 Project Structure
 
-```
-PythonProject/
-│
-├── app.py                  # Flask application entry point
-├── ensembl_api.py          # Ensembl API integration and data processing
-├── requirements.txt        # Project dependencies
-├── README.md               # Project documentation
-│
+```text
+.
+├── app.py                 # Flask application
+├── ensembl_api.py         # Ensembl API access logic
+├── requirements.txt       # Project dependencies
+├── README.md              # English documentation
+├── README_pt.md           # Portuguese documentation
 ├── templates/
-│   └── index.html          # Web interface template
-│
+│   └── index.html         # HTML template
 ├── tests/
-│   └── test_ensembl_api.py # Unit tests
-│
-└── .venv/                  # Virtual environment (not committed)
-```
+│   ├── __init__.py
+│   ├── test_api.py
+│   └── test_ensembl_api.py
+└── Dockerfile             # Docker configuration
 
+```
 ---
 
 ## How to Run Locally
@@ -64,20 +72,17 @@ PythonProject/
 ### 1. Clone the repository
 
 ```bash
-git clone <repository_url>
-cd PythonProject
+git clone https://github.com/bvieiracosta/ensembl-variant-lookup.git
+cd ensembl-variant-lookup
 ```
 
 ### 2. Create and activate a virtual environment
 
 ```bash
 python -m venv .venv
+source .venv/bin/activate   # Linux/Mac
+.venv\Scripts\activate      # Windows
 
-# Windows
-.venv\Scripts\activate
-
-# Linux / macOS
-source .venv/bin/activate
 ```
 
 ### 3. Install dependencies
@@ -92,7 +97,7 @@ pip install -r requirements.txt
 python app.py
 ```
 
-The application will be available at:
+Access the application at:
 
 ```
 http://127.0.0.1:5000
@@ -143,19 +148,48 @@ All data retrieved is publicly available and provided by Ensembl.
 * Missing fields from the API response are handled gracefully and returned as `null` or empty values
 
 ---
+## 🐳 Running the application with Docker
+🔹 What is Docker?
 
-## Future Improvements
+Docker allows the application to run in an isolated, reproducible environment, ensuring consistent behavior across different systems.
 
-* Add caching to reduce repeated API calls
-* Improve frontend styling
-* Add support for batch rsID queries
-* Extend annotations with clinical or pharmacogenomic data
-* Dockerize the application for easier deployment
+This project can be easily run using Docker, without the need to manually install Python dependencies.
+
+### 🔧 Requirements
+- Docker Desktop installed and running  
+  👉 https://www.docker.com/products/docker-desktop/
 
 ---
 
-## Author
 
-Developed by **Brenda Vieira**
+### 📦 Build the Docker image
 
-Background in **Pharmacy and Biochemistry**, transitioning into **Bioinformatics and Data Analysis**.
+From the root of the project, run:
+
+```bash
+docker build -t ensembl-variant-app .
+```
+### 📦 Run the container
+```bash
+docker run -p 5000:5000 ensembl-variant-app
+```
+Then access:
+http://127.0.0.1:5000
+
+### 📦 List running containers
+```bash
+docker ps
+```
+
+### 📦 Stop a container
+```bash
+docker stop <CONTAINER_ID>
+```
+
+
+
+# Author
+
+Developed by Brenda Vieira
+
+Graduated in Pharmacy and Biochemistry. Bioinformatics and Genomics enthusiastic.

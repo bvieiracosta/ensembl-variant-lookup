@@ -68,3 +68,16 @@ def build_variant_response(rsid: str) -> dict:
         "genes": genes,
         "consequence": consequences
     }
+
+if __name__ == "__main__":
+    rsid = "rs3892097"
+
+    try:
+        result = build_variant_response(rsid)
+        print(result)
+
+    except ValueError as e:
+        print(f"Erro ao buscar a variante {rsid}: {e}")
+
+    except requests.exceptions.RequestException as e:
+        print(f"Erro de conexão com a API do Ensembl: {e}")

@@ -37,17 +37,16 @@ A aplicação permite que o usuário informe um rsID (por exemplo, `rs1333049`) 
 ## 📁 Estrutura do projeto
 
 ```text
-PythonProject/
-│
-├── app.py                 # Aplicação Flask
-├── ensembl_api.py         # Lógica de consulta e processamento da API
-├── requirements.txt       # Dependências do projeto
-│
+.
+├── app.py
+├── ensembl_api.py
+├── requirements.txt
+├── README.md
+├── README_pt.md
 ├── templates/
-│   └── index.html         # Interface web
-│
+│   └── index.html
 ├── tests/
 │   ├── __init__.py
-│   └── test_ensembl_api.py # Testes unitários
-│
-└── .venv/                 # Ambiente virtual
+│   ├── test_api.py
+│   └── test_ensembl_api.py
+└── Dockerfile
