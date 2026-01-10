@@ -26,12 +26,36 @@
     {% if result %}
         <h2>Resultado</h2>
         <ul>
-            <li><b>Cromossomo:</b> {{ result.chromosome }}</li>
-            <li><b>Posição:</b> {{ result.position }}</li>
-            <li><b>Alelos:</b> {{ result.alleles }}</li>
-            <li><b>Frequência do alelo menor:</b> {{ result.minor_allele_freq }}</li>
-            <li><b>Consequência:</b> {{ result.consequence }}</li>
+            <li>
+                <b>Cromossomo:</b>
+                {{ result.chromosome if result.chromosome else "Dados não encontrados" }}
+            </li>
+
+            <li>
+                <b>Posição:</b>
+                {{ result.position if result.position else "Dados não encontrados" }}
+            </li>
+
+            <li>
+                <b>Alelos:</b>
+                {{ result.alleles if result.alleles else "Dados não encontrados" }}
+            </li>
+
+            <li>
+                <b>Frequência do alelo menor:</b>
+                {{ result.minor_allele_freq if result.minor_allele_freq else "Dados não encontrados" }}
+            </li>
+
+            <li>
+                <b>Consequência:</b>
+                {% if result.consequence %}
+                    {{ result.consequence | join(", ") }}
+                {% else %}
+                    Dados não encontrados
+                {% endif %}
+            </li>
         </ul>
     {% endif %}
 </body>
 </html>
+

@@ -1,7 +1,11 @@
 import requests
 
 ENSEMBL_URL = "https://rest.ensembl.org/variation/human/{}"
-HEADERS = {"Content-Type": "application/json"}
+HEADERS = {
+    "Content-Type": "application/json",
+    "Accept": "application/json"
+}
+
 
 
 def fetch_variant(rsid: str) -> dict:
@@ -65,10 +69,10 @@ def build_variant_response(rsid: str) -> dict:
 
     return {
         "rsid": rsid,
-        "chromosome": mapping["chromosome"],
-        "position": mapping["position"],
+        "chromosome": mapping.get("chromosome"),
+        "position": mapping.get("position"),
         "alleles": data.get("alleles"),
         "minor_allele_freq": data.get("minor_allele_freq"),
-        "genes": genes,
-        "consequence": consequences
+        "genes": genes if genes else None,
+        "consequence": consequences if consequences else None
     }

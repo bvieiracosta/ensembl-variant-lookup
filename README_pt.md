@@ -161,6 +161,8 @@ docker ps
 docker stop <CONTAINER_ID>
 ```
 
+# Observação importante
+Nem todas as variantes retornam consequência funcional ou minor_allele_freq usando o endpoint /variation/human/{rsID}. Quando a informação não está disponível, o sistema retorna listas vazias ou null, mantendo robustez e transparência.
 # Autora
 
 Desenvolvido por **Brenda Vieira**
